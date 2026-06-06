@@ -1,0 +1,48 @@
+import { getData, updateStatus } from "./db";
+import { google } from "googleapis";
+
+export function startScheduler() {
+  console.log("⏰ Scheduler started");
+
+  setInterval(async () => {
+    const data = getData();
+
+    const video = data.find((v) => v.status === "pending");
+
+    if (!video) {
+      console.log("📭 No pending videos");
+      return;
+    }
+
+    console.log("🎬 Uploading:", video.topic);
+
+    try {
+      // TEMP: access token env se (abhi demo)
+const accessToken = process.env.GOOGLE_ACCESS_TOKEN;
+
+if (!accessToken) {
+  console.log("❌ Login token missing");
+  return;
+}
+      if (!accessToken) {
+        console.log("❌ No access token found");
+        return;
+      }
+console.log("🚀 Starting YouTube upload for:", video.topic);
+console.log("📤 Uploading video...");
+      const youtube = google.youtube({
+        version: "v3",
+        auth: accessToken,
+      });
+
+
+      updateStatus(video.id, "done");
+
+      console.log("✅ Uploaded:", response.data.id);
+
+    } catch (err) {
+      console.log("❌ Upload failed:", err.message);
+    }
+
+  }, 60000);
+}
