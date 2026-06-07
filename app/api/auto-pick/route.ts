@@ -4,7 +4,7 @@ import { getData } from "@/lib/db";
 export async function GET() {
   const data = getData();
 
-  const video = data.find((v) => v.status === "pending");
+const video = data.find((v: any) => v.status === "pending");
 
   if (!video) {
     return NextResponse.json({
