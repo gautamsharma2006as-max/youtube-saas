@@ -9,7 +9,7 @@ const handler = NextAuth({
       authorization: {
         params: {
           scope:
-            "https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile",
+            "openid email profile https://www.googleapis.com/auth/youtube.upload",
           access_type: "offline",
           prompt: "consent",
         },
@@ -18,18 +18,20 @@ const handler = NextAuth({
   ],
 
   callbacks: {
-    async jwt({ token, account }) {
+    async jwt({ token, account }: any) {
       if (account) {
         token.accessToken = account.access_token;
       }
       return token;
     },
 
-    async session({ session, token }) {
-      session.accessToken = token.accessToken;
+    async session({ session, token }: any) {
+      // TypeScript compiler ko shaant karne ke liye (session as any) lagaya hai
+      (session as any).accessToken = token.accessToken;
       return session;
     },
   },
 });
 
 export { handler as GET, handler as POST };
+
