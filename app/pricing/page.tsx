@@ -7,7 +7,6 @@ export default function PricingPage() {
   const handlePayment = async () => {
     setLoading(true);
     // Yahan hum dummy integration kar rahe hain jab tak aapki key nahi aati
-    alert("Payment System Initialized! Razorpay key daalte hi yeh live ho jayega.");
     setLoading(false);
   };
 
