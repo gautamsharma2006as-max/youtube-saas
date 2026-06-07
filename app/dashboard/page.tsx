@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Dashboard() {
@@ -138,7 +138,13 @@ export default function Dashboard() {
       
       {/* Top Controls Card */}
       <div style={{ padding: "20px", background: "white", borderRadius: "12px", marginBottom: "20px", boxShadow: "0 2px 10px rgba(0,0,0,0.1)" }}>
-     <h1>🚀 TubePilot Control Panel</h1> 
+<Image
+  src="/logo.png"
+  alt="TubePilot Logo"
+  width={100}
+  height={100}
+/>   
+ <h1>🚀 TubePilot Control Panel</h1> 
      <p>Automate. Upload. Grow.</p>
    
         {/* Stats Cards Row */}
