@@ -1,0 +1,16 @@
+{
+  "name": "Youtube SaaS",
+  "short_name": "YT SaaS",
+  "description": "Mera YouTube SaaS App",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "192x192",
+      "type": "image/x-icon"
+    }
+  ]
+}
