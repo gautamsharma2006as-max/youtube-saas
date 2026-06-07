@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
-    "build": "prisma generate "build": "prisma generate && prisma db push && next build --webpack""build": "prisma generate && prisma db push && next build --webpack" next build --webpack",
+"build": "prisma generate && prisma db push && next build",   
     "start": "next start"
   },
   "dependencies": {
