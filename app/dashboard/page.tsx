@@ -139,7 +139,8 @@ export default function Dashboard() {
       {/* Top Controls Card */}
       <div style={{ padding: "20px", background: "white", borderRadius: "12px", marginBottom: "20px", boxShadow: "0 2px 10px rgba(0,0,0,0.1)" }}>
      <h1>🚀 TubePilot Control Panel</h1> 
-        
+     <p>Automate. Upload. Grow.</p>
+   
         {/* Stats Cards Row */}
         <div style={{ display: "flex", gap: "10px", marginBottom: "20px", flexWrap: "wrap" }}>
           <div style={cardStyle}>📌 Total Videos: {totalCount}</div>
