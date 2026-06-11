@@ -1,8 +1,18 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-
+import { useSession, signIn } from "next-auth/react";
 export default function Dashboard() {
+const { data: session, status } = useSession();
+
+if (status === "loading") {
+  return <h2>Loading...</h2>;
+}
+
+if (!session) {
+  signIn("google");
+  return <h2>Redirecting to Login...</h2>;
+}
   const [topic, setTopic] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
   const [channelName, setChannelName] = useState("");
@@ -43,7 +53,7 @@ export default function Dashboard() {
       formData.append("uploadTime", uploadTime);
       formData.append("status", "pending");
 
-      const res = await fetch("/api/upload", {
+const res = await fetch("/api/save", {     
         method: "POST",
         body: formData, // FormData ke saath explicit Content-Type header nahi lagaya jata
       });
