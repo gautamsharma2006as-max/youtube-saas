@@ -10,8 +10,7 @@ if (status === "loading") {
 }
 
 if (!session) {
-  signIn("google");
-  return <h2>Redirecting to Login...</h2>;
+  return <h2>Not logged in</h2>;
 }
   const [topic, setTopic] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
