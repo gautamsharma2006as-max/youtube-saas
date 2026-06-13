@@ -3,8 +3,15 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 export default function Dashboard() {
-  const { data: session, status } = useSession();
+const { data: session, status } = useSession();
 
+if (status === "loading") {
+  return <h2>Loading...</h2>;
+}
+
+if (!session) {
+  return <h2>Not logged in</h2>;
+}
   const [topic, setTopic] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
   const [channelName, setChannelName] = useState("");
@@ -12,13 +19,6 @@ export default function Dashboard() {
   const [file, setFile] = useState<File | null>(null);
   const [videos, setVideos] = useState<any[]>([]);
 
-  if (status === "loading") {
-    return <h2>Loading...</h2>;
-  }
-
-  if (!session) {
-    return <h2>Not logged in</h2>;
-  }
   useEffect(() => {
     loadVideos();
   }, []);
